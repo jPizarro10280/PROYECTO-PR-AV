@@ -1,0 +1,76 @@
+﻿@using PROYECTO_PR_AV.Models;
+@{
+    ViewBag.Title = "Index";
+    List<Producto> productos = ViewBag.producto;
+
+}
+@ViewBag.successMessage;
+<table class="table">
+    <tr>
+
+        <th>
+            nombreProducto
+        </th>
+        <th>
+            precio
+        </th>
+    </tr>
+    @foreach (Producto item in (Producto[])ViewBag.productos)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreProducto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precio)
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Carrito de compras</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Producto
+                        </th>
+                        <th>
+                            Precio
+                        </th>
+                    </tr>
+                    @foreach (Producto item in (Producto[])ViewBag.productos)
+                    {
+                        <tr>
+                            <td>
+                                ViewBag.productos.nombreProducto;
+                            </td>
+                            <td>
+                                ViewBag.productos.precio;
+                            </td>
+                        </tr>
+                    }
+                </table>
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

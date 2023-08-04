@@ -1,0 +1,84 @@
+﻿@model IEnumerable<PROYECTO_PR_AV.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="row row-cols-1 row-cols-md-3 g-4" style="margin: 10px; text-align: center">
+    @foreach (var item in Model)
+    {
+
+        <div class="col">
+            <div class="card" style="justify-content: center; height: auto; text-justify: auto; align-items: center">
+                <a href=""><img src="~/Assets/img/prod8.jpg" class="img-fluid" alt="..."></a>
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.nombreProducto)</h5>
+                    <p class="card-text">@Html.DisplayFor(modelItem => item.precio)</p>
+                    @Html.ActionLink("Agregar al Carrito", "AgregarAlCarrito", new { id = item.IdProducto })
+
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombreProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.disponibilidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoriaId)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombreProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.disponibilidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.estado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoriaId)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdProducto }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdProducto }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdProducto })
+                    @Html.ActionLink("Agregar al Carrito", "AgregarAlCarrito", new { id = item.IdProducto })
+                </td>
+            </tr>
+        }
+
+    </table>
